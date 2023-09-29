@@ -83,7 +83,7 @@ def func__lc_ts(args__ul__gnc_nc,args__opt_lang,args__mtch_btn):
                             st.write(tle__lc_nul)
                             st.write(smry__lc_nul)
                     st.divider()
-                    st.markdown("<hr style='border: 2px dashed orange;'>", unsafe_allow_html=True)
+                    st.markdown("<hr style='border: 1px dashed #FF4B4B;'>", unsafe_allow_html=True)
                 elif(len(dspn__lc_nul)>1):
                     st.write(tle__lc_nul)
                     st.write(dspn__lc_nul)
@@ -98,7 +98,7 @@ def func__lc_ts(args__ul__gnc_nc,args__opt_lang,args__mtch_btn):
                             st.write(tle__lc_nul)
                             st.write(dspn__lc_nul)
                     st.divider()
-                    st.markdown("<hr style='border: 2px dashed orange;'>", unsafe_allow_html=True)
+                    st.markdown("<hr style='border: 1px dashed #FF4B4B;'>", unsafe_allow_html=True)
                 else:
                     pass
             except Exception as e:
