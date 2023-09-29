@@ -1,12 +1,16 @@
 import streamlit as st
 import time
 import gnewsclient.gnewsclient as gnewsclient
-import translators as ts
-
 from langchain.document_loaders import NewsURLLoader
-
 import nltk
 nltk.download('punkt')
+from googletrans import Translator
+
+def translate_text_with_googletrans(text, target_language):
+    translator = Translator()
+    translation = translator.translate(text, dest=target_language)
+    return translation.text
+
 
 def func__init__gnc_lc_ts(args__mtch_btn):
     op_log = st.empty()
@@ -47,6 +51,7 @@ def func__lc_ts(args__ul__gnc_nc,args__opt_lang,args__mtch_btn):
                 if(0):
                     pass
                 elif(len(smry__lc_nul)>1):
+
                     op_log = st.empty()
                     op_log.text("fetching news ...")
                     time.sleep(0.5)
@@ -70,9 +75,9 @@ def func__lc_ts(args__ul__gnc_nc,args__opt_lang,args__mtch_btn):
                             op_log.empty()
                             time.sleep(0.5)
 
-                            tle__lc_nul = ts.translate_text(tle__lc_nul,from_language='auto',to_language=config__ts_langs[args__opt_lang])
+                            tle__lc_nul = translate_text_with_googletrans(tle__lc_nul,config__ts_langs[args__opt_lang])
                             st.write(tle__lc_nul)
-                            smry__lc_nul = ts.translate_text(smry__lc_nul,from_language='auto',to_language=config__ts_langs[args__opt_lang])
+                            smry__lc_nul = translate_text_with_googletrans(smry__lc_nul,config__ts_langs[args__opt_lang])
                             st.write(smry__lc_nul)
                         else:
                             st.write(tle__lc_nul)
@@ -83,9 +88,10 @@ def func__lc_ts(args__ul__gnc_nc,args__opt_lang,args__mtch_btn):
                     st.write(dspn__lc_nul)
                     if args__opt_lang!='english':
                         if(args__opt_lang in config__ts_langs):
-                            tle__lc_nul = ts.translate_text(tle__lc_nul,from_language='auto',to_language=config__ts_langs[args__opt_lang])
+                            tle__lc_nul = translate_text_with_googletrans(tle__lc_nul,config__ts_langs[args__opt_lang])
                             st.write(tle__lc_nul)
-                            dspn__lc_nul = ts.translate_text(dspn__lc_nul,from_language='auto',to_language=config__ts_langs[args__opt_lang])
+
+                            dspn__lc_nul = translate_text_with_googletrans(dspn__lc_nul,config__ts_langs[args__opt_lang])
                             st.write(dspn__lc_nul)
                         else:
                             st.write(tle__lc_nul)
