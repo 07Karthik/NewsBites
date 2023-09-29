@@ -118,7 +118,7 @@ lst_gnc_nc_langs = config__gnc_nc.languages
 lst_gnc_nc_langs = ['english','telugu','hindi']
 
 st.divider()
-st.markdown("<h2 style='font-size: 28px; text-align: center; color: #FF4B4B;'>Personal News Summarization Assistant (PNSA)</h2>", unsafe_allow_html=True)
+st.markdown("<h2 style='font-size: 28px; text-align: center; color: orange;'>Personal News Summarization Assistant (PNSA)</h2>", unsafe_allow_html=True)
 st.markdown("<h2 style='font-size: 16px; text-align: center; color: white;'>CMR Technical Campus | Surge Classes | Deep Learning | Lang Chain<h2>", unsafe_allow_html=True)
 st.markdown("<h2 style='font-size: 16px; text-align: center; color: white;'>K.V.N.Aditya | P.Sai Karthik | P.Phanindra | M.Venu | B.Lokesh Reddy<h2>", unsafe_allow_html=True)
 st.divider()
