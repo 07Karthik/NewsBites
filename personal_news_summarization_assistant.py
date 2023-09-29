@@ -77,7 +77,7 @@ def func__lc_ts(args__ul__gnc_nc,args__opt_lang,args__mtch_btn):
 
                     st.write(tle__lc_nul)
                     st.write(smry__lc_nul)
-                    <span style="color: {text_color}; font-size: 24px;">{text}</span>
+                    
                     st.write('<span style="color: orange; font-size: 15px;">Link for above News/Article</span>' + short_url(args__ul__gnc_nc[i]))
 
                     op_log.text("summarizing the news extracted from the urls ...")
