@@ -1,0 +1,5 @@
+langchain
+gnewsclient
+translators
+nltk
+newspaper3k
