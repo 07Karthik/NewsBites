@@ -60,6 +60,7 @@ def func__lc_ts(args__ul__gnc_nc,args__opt_lang,args__mtch_btn):
     config__ts_langs = {'english' : 'en','telugu' : 'te','hindi' : 'hi'}
     config__lc_nul = NewsURLLoader(args__ul__gnc_nc,nlp=True)
     if(args__mtch_btn==0):
+        i = 0
         for itr in config__lc_nul.load():
             try:
                 tle__lc_nul = 'Title : ' + itr.metadata['title']
@@ -78,8 +79,7 @@ def func__lc_ts(args__ul__gnc_nc,args__opt_lang,args__mtch_btn):
                     st.write(tle__lc_nul)
                     st.write(smry__lc_nul)
                     
-                    st.markdown('<span style="color: #FF4B4B; font-size: 18px;">Link for above News/Article :</span>',unsafe_allow_html=True)
-                    st.write(short_url(args__ul__gnc_nc[i]))
+                    st.write("Link for above News/Article: ",short_url(args__ul__gnc_nc[i]))
 
                     op_log.text("summarizing the news extracted from the urls ...")
                     time.sleep(0.5)
@@ -123,6 +123,7 @@ def func__lc_ts(args__ul__gnc_nc,args__opt_lang,args__mtch_btn):
                     pass
             except Exception as e:
                 st.write(e)
+            i = i+1
     if(args__mtch_btn==1):
         for itr in config__lc_nul.load():
             try:
