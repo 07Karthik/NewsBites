@@ -5,6 +5,23 @@ from langchain.document_loaders import NewsURLLoader
 import nltk
 nltk.download('punkt')
 from googletrans import Translator
+import pyshorteners
+
+def short_url(original_url):
+    # Create a Shortener object
+    s = pyshorteners.Shortener()
+    try:
+        # Shorten the URL
+        shortened_url = s.tinyurl.short(original_url)
+
+        # Display the shortened URL
+        return shortened_url
+    except pyshorteners.exceptions.ShorteningErrorException as e:
+        # Handle the URL shortening error
+        print(f"An error occurred while loading the URL")
+    except Exception as e:
+        # Handle other exceptions
+        print(f"An unexpected error occurred")
 
 def translate_text_with_googletrans(text, target_language):
     translator = Translator()
@@ -60,6 +77,8 @@ def func__lc_ts(args__ul__gnc_nc,args__opt_lang,args__mtch_btn):
 
                     st.write(tle__lc_nul)
                     st.write(smry__lc_nul)
+                    <span style="color: {text_color}; font-size: 24px;">{text}</span>
+                    st.write('<span style="color: orange; font-size: 15px;">Link for above News/Article</span>' + short_url(args__ul__gnc_nc[i]))
 
                     op_log.text("summarizing the news extracted from the urls ...")
                     time.sleep(0.5)
