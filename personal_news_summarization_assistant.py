@@ -78,7 +78,8 @@ def func__lc_ts(args__ul__gnc_nc,args__opt_lang,args__mtch_btn):
                     st.write(tle__lc_nul)
                     st.write(smry__lc_nul)
                     
-                    st.write('<span style="color: orange; font-size: 15px;">Link for above News/Article</span>' + short_url(args__ul__gnc_nc[i]))
+                    st.markdown('<span style="color: #FF4B4B; font-size: 18px;">Link for above News/Article :</span>',unsafe_allow_html=True)
+                    st.write(short_url(args__ul__gnc_nc[i]))
 
                     op_log.text("summarizing the news extracted from the urls ...")
                     time.sleep(0.5)
