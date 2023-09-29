@@ -5,8 +5,8 @@ import translators as ts
 
 from langchain.document_loaders import NewsURLLoader
 
-# import nltk
-# nltk.download('punkt')
+import nltk
+nltk.download('punkt')
 
 def func__init__gnc_lc_ts(args__mtch_btn):
     op_log = st.empty()
