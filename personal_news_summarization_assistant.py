@@ -82,8 +82,8 @@ def func__lc_ts(args__ul__gnc_nc,args__opt_lang,args__mtch_btn):
                         else:
                             st.write(tle__lc_nul)
                             st.write(smry__lc_nul)
-                    st.divider()
-                    st.markdown("<hr style='border: 1px dashed #FF4B4B;'>", unsafe_allow_html=True)
+                    # st.divider()
+                    st.markdown("<hr style='border: 2px solid #FF4B4B;'>", unsafe_allow_html=True)
                 elif(len(dspn__lc_nul)>1):
                     st.write(tle__lc_nul)
                     st.write(dspn__lc_nul)
@@ -97,8 +97,8 @@ def func__lc_ts(args__ul__gnc_nc,args__opt_lang,args__mtch_btn):
                         else:
                             st.write(tle__lc_nul)
                             st.write(dspn__lc_nul)
-                    st.divider()
-                    st.markdown("<hr style='border: 1px dashed #FF4B4B;'>", unsafe_allow_html=True)
+                    # st.divider()
+                    st.markdown("<hr style='border: 2px solid #FF4B4B;'>", unsafe_allow_html=True)
                 else:
                     pass
             except Exception as e:
@@ -118,7 +118,7 @@ lst_gnc_nc_langs = config__gnc_nc.languages
 lst_gnc_nc_langs = ['english','telugu','hindi']
 
 st.divider()
-st.markdown("<h2 style='font-size: 28px; text-align: center; color: white;'>Personal News Summarization Assistant (PNSA)</h2>", unsafe_allow_html=True)
+st.markdown("<h2 style='font-size: 28px; text-align: center; color: #FF4B4B;'>Personal News Summarization Assistant (PNSA)</h2>", unsafe_allow_html=True)
 st.markdown("<h2 style='font-size: 16px; text-align: center; color: white;'>CMR Technical Campus | Surge Classes | Deep Learning | Lang Chain<h2>", unsafe_allow_html=True)
 st.markdown("<h2 style='font-size: 16px; text-align: center; color: white;'>K.V.N.Aditya | P.Sai Karthik | P.Phanindra | M.Venu | B.Lokesh Reddy<h2>", unsafe_allow_html=True)
 st.divider()
