@@ -6,6 +6,9 @@ import nltk
 nltk.download('punkt')
 from googletrans import Translator
 import pyshorteners
+import tempfile
+from gtts import gTTS
+import os
 
 def short_url(original_url):
     # Create a Shortener object
@@ -23,6 +26,34 @@ def short_url(original_url):
         # Handle other exceptions
         print(f"An unexpected error occurred")
 
+def do_tts(text,language):
+    tts = gTTS(text,lang=language)
+    temp_file = tempfile.NamedTemporaryFile(suffix=".mp3", delete=False)
+    tts.save(temp_file.name)
+    
+    temp_file.close()
+    return temp_file.name
+
+def Audio(text,lang,key):
+    st.subheader("Text-to-Speech Converter")
+
+    # Input text
+    text = text
+    language = lang
+    # st.write("This is not cool.")
+    # if st.button("Convert to Speech",key=key):
+    if True:
+        st.write("Plase wait until it converts to speech")
+        if text:
+            file_path = do_tts(text,language)
+            st.audio(file_path, format="audio/mp3")
+            os.remove(file_path)
+
+        else:
+            st.warning("Please enter text before converting.")
+
+    st.write("Powered by gTTS (Google Text-to-Speech)")
+
 def translate_text_with_googletrans(text, target_language):
     translator = Translator()
     translation = translator.translate(text, dest=target_language)
@@ -30,11 +61,11 @@ def translate_text_with_googletrans(text, target_language):
 
 
 def func__init__gnc_lc_ts(args__mtch_btn):
-    op_log = st.empty()
-    op_log.text("connecting to GoogleNewsAPI ...")
-    time.sleep(0.5)
-    op_log.text("successfully connected to GoogleNewsAPI ...")
-    time.sleep(0.5)
+    # op_log = st.empty()
+    # op_log.text("connecting to GoogleNewsAPI ...")
+    # time.sleep(0.5)
+    # op_log.text("successfully connected to GoogleNewsAPI ...")
+    # time.sleep(0.5)
 
     # op_log.text("summarizing the news extracted from the urls ...")
     # time.sleep(2)
@@ -42,8 +73,8 @@ def func__init__gnc_lc_ts(args__mtch_btn):
     # time.sleep(2)
     # op_log.text("returning the translated news results ...")
     # time.sleep(2)
-    op_log.empty()
-    time.sleep(2)
+    # op_log.empty()
+    # time.sleep(2)
     func__lc_ts(func__gnc(st_sb_opt_loc,st_sb_opt_tpc,st_sb_opt_nc),st_sb_opt_lang,args__mtch_btn)
 
 def func__gnc(args__opt_loc,args__opt_tpc,args__opt_nc):
@@ -70,35 +101,42 @@ def func__lc_ts(args__ul__gnc_nc,args__opt_lang,args__mtch_btn):
                     pass
                 elif(len(smry__lc_nul)>1):
 
-                    op_log = st.empty()
-                    op_log.text("fetching news ...")
-                    time.sleep(0.5)
-                    op_log.empty()
-                    time.sleep(0.5)
+                    # op_log = st.empty()
+                    # op_log.text("fetching news ...")
+                    # time.sleep(0.5)
+                    # op_log.empty()
+                    # time.sleep(0.5)
 
                     st.write(tle__lc_nul)
                     st.write(smry__lc_nul)
-                    
+                    Audio(smry__lc_nul,'en',key=i+3)
+
+
                     st.write("Link for above News/Article: ",short_url(args__ul__gnc_nc[i]))
 
-                    op_log.text("summarizing the news extracted from the urls ...")
-                    time.sleep(0.5)
+                    # op_log.text("summarizing the news extracted from the urls ...")
+                    # time.sleep(0.5)
 
-                    op_log.empty()
-                    time.sleep(0.5)
+                    # op_log.empty()
+                    # time.sleep(0.5)
                     if args__opt_lang!='english':
                         if(args__opt_lang in config__ts_langs):
-                            op_log = st.empty()
-                            op_log.text("translating the summarized news results ...")
-                            time.sleep(0.5)
+                            # op_log = st.empty()
+                            
+                            # op_log.text("translating the summarized news results ...")
+                            # time.sleep(0.5)
 
-                            op_log.empty()
-                            time.sleep(0.5)
+                            # op_log.empty()
+                            # time.sleep(0.5)
 
                             tle__lc_nul = translate_text_with_googletrans(tle__lc_nul,config__ts_langs[args__opt_lang])
                             st.write(tle__lc_nul)
                             smry__lc_nul = translate_text_with_googletrans(smry__lc_nul,config__ts_langs[args__opt_lang])
                             st.write(smry__lc_nul)
+                            if args__opt_lang == 'telugu':
+                               Audio(smry__lc_nul,'te',key=i+3)
+                            else:
+                                Audio(smry__lc_nul,'hi',key=i+3)
                         else:
                             st.write(tle__lc_nul)
                             st.write(smry__lc_nul)
@@ -114,6 +152,10 @@ def func__lc_ts(args__ul__gnc_nc,args__opt_lang,args__mtch_btn):
 
                             dspn__lc_nul = translate_text_with_googletrans(dspn__lc_nul,config__ts_langs[args__opt_lang])
                             st.write(dspn__lc_nul)
+                            if args__opt_lang == 'telugu':
+                               Audio(dspn__lc_nul,'te',key=i+3)
+                            else:
+                                Audio(dspn__lc_nul,'hi',key=i+3)
                         else:
                             st.write(tle__lc_nul)
                             st.write(dspn__lc_nul)
@@ -139,9 +181,9 @@ lst_gnc_nc_langs = config__gnc_nc.languages
 lst_gnc_nc_langs = ['english','telugu','hindi']
 
 st.divider()
-st.markdown("<h2 style='font-size: 28px; text-align: center; color: orange;'>Personal News Summarization Assistant (PNSA)</h2>", unsafe_allow_html=True)
-st.markdown("<h2 style='font-size: 16px; text-align: center; color: white;'>CMR Technical Campus | Surge Classes | Deep Learning | Lang Chain<h2>", unsafe_allow_html=True)
-st.markdown("<h2 style='font-size: 16px; text-align: center; color: white;'>K.V.N.Aditya | P.Sai Karthik | P.Phanindra | M.Venu | B.Lokesh Reddy<h2>", unsafe_allow_html=True)
+st.markdown("<h2 style='font-size: 32px; text-align: center; color: orange;'>Personal News Summarization Assistant (PNSA)</h2>", unsafe_allow_html=True)
+st.markdown("<h2 style='font-size: 18px; text-align: center; color: white;'>CMR Technical Campus | Surge Classes | Deep Learning | Lang Chain<h2>", unsafe_allow_html=True)
+st.markdown("<h2 style='font-size: 18px; text-align: center; color: white;'>K.V.N.Aditya | P.Sai Karthik | P.Phanindra | M.Venu | B.Lokesh Reddy<h2>", unsafe_allow_html=True)
 st.divider()
 with st.sidebar:
     st.markdown("<h1 style='text-align: center; font-size:15px; color: white;'>!!! opt the news based on your interests !!!</h1>", unsafe_allow_html=True)
